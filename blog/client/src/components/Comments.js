@@ -79,13 +79,13 @@ const handleComment = ()=>{
               <p>{element.comment}</p>
               <button className='blog-btn' style={{display: element.display}} onClick={()=>{handleDelete(element)}}>Delete</button>
         </div>
-      )):
+      )) :
       <p className='grey'>No comments</p>
       }
 
     </div>
   )
-}
+    }
 
 const mapStateToProps = (state)=>{
 
