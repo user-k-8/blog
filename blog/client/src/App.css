@@ -43,10 +43,16 @@ body{
 
 .blog-hero{
     margin-top: -4rem;
+    height: 100vh;
+   width: 100%;
+}
+.create-post-hero{
+    margin-top: -4rem;
     /* background: url('./components/img/blog-hero.jpg') center center/ cover; */
     height: 100vh;
    width: 100%;
 }
+
 .nav-txt{
     color: white;
     text-decoration: none;
@@ -73,12 +79,41 @@ body{
     -webkit-text-fill-color: transparent;
     font-size: 4.9rem;
 }
-
+.blue{
+    color: #01094d;
+}
 .hero-text>h3{
     font-size: 2.5rem;
     font-weight: 500 !important;
     margin-top: -2rem !important;
     background: -webkit-linear-gradient(#408bd6, #2231b5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.create-post-hero-text{
+ 
+    
+    padding-top: 5rem ;
+    margin-left: 5rem;
+   
+    margin-top: 4rem;
+    width: fit-content;
+    text-align: left;
+}
+
+.create-post-hero-text>h1{
+  
+    background: -webkit-linear-gradient(#6d67de , #884d93);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4.9rem;
+}
+
+.create-post-hero-text>h3{
+    font-size: 2.5rem;
+    font-weight: 500 !important;
+    margin-top: -2rem !important;
+    background: -webkit-linear-gradient(#6d67de , #884d93);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -336,24 +371,40 @@ body{
 }
 
 .create-post-container{
-    width: fit-content;
-margin-left: auto;
-margin-right: auto;
-text-align: left;
 
-padding: 40px;
-border-radius: 10px;
-background-color: white;
+
+
+    background: url('./components/img/blog-hero.jpg') center center/ cover;
 color: black;
 }
 .post-form-container{
-
+    margin-top: 4.5rem;
+    padding-top: 2rem;
     min-height: 100vh;
-   
+    color: rgb(255, 255, 255);
+   font-weight: 600;
+   text-align: center;
+    padding-bottom: 3rem;
 }
 .post-form-container>h1{
-    font-size: 3rem;
+    margin-top: -1rem;
+    font-size: 4rem;
     text-align: center;
+    background: -webkit-linear-gradient(#6d67de , #884d93);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.post-input{
+    background-color: rgba(0, 6, 65, 0.9) !important;
+    border: none;
+    color: white;
+}
+
+.blog-post-input{
+    background-color: rgba(0, 6, 65, 0.9) !important;
+    min-height: 200px;
+    border: none;
+    color: white;
 }
 
 .name-bottom{
@@ -415,7 +466,11 @@ input,select,textarea {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-bottom: 20px;
-  width: 40vw !important;
+  width: 40vw ;
+}
+
+.login-container{
+    background: url('./components/img/blog-hero.jpg') center center/ cover;
 }
 .comments-container{
     padding-left: 6rem;
@@ -484,6 +539,8 @@ input,select,textarea {
     width: 90%;
     margin-top: 2rem;
 }
+
+
 @media screen and (max-width:991px ){
     .view-post-wrapper>h1{
         font-size: 3rem;
@@ -526,6 +583,24 @@ input,select,textarea {
      
     }
 
+    .create-post-container{  
+    background: url('./components/img/blog-hero.jpg') center left/ cover;
+    color: black;
+    }
+
+    .create-post-hero-text{
+ 
+    
+        padding-top: 5rem ;
+        margin-left: 2rem;
+       
+        margin-top: 4rem;
+        width: fit-content;
+        text-align: left;
+    }
+    
+
+
     .footer-container{
          
         padding-left: 2rem;
@@ -567,6 +642,14 @@ input,select,textarea {
     }
     .comment-input{
         width: 70vw !important;
+    }
+
+    .post-input{
+      width: 70vw;
+    }
+    
+    .blog-post-input{
+        width: 70vw;
     }
 }
 
@@ -631,6 +714,6 @@ input,select,textarea {
     
     .view-post-wrapper>h3{
         font-size: 1.4rem;
-        width: 90%;
+        width: 95%;
     }
 }

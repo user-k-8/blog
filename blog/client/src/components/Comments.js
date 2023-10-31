@@ -72,7 +72,7 @@ const handleComment = ()=>{
         </form>
 
        </div>
-      {props.selected_post.user_comments.length>0?
+      {props.selected_post.user_comments?
       props.selected_post.user_comments.map((element)=>(
         <div className='comment-wrapper'>
               <h3>{element.name}</h3>
