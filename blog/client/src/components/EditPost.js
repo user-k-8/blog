@@ -17,36 +17,16 @@ const EditPost = () => {
   }); 
   
  
-  
   const handleInputChange = event=>{
   
   const {name, value, type, checked} = event.target
-  setForm({...form, [name]: type==='checkbox' ? checked : value})
+  setForm({...form, [name]:  value})
   }
   
   
   const handleSubmit = async (e)=>{
      e.preventDefault();
-    const fullFormData = new FormData();
-    for (let key in form) {
-        fullFormData.append(key, form[key]);
-    }
-   if(selectedFiles1){
-    fullFormData.append('images', selectedFiles1)
-   }
-   if(selectedFiles2){
-    fullFormData.append('images', selectedFiles2)
-   }
-    try {
-      const response = await  fetch('http://localhost:4000/api/upload', {
-        method: 'POST',
-        body: fullFormData,
-      });
-      const data = await response.text();
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+   
   
   alert('Blog post created!');
   navigate('/blog')
