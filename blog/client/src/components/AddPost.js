@@ -78,7 +78,8 @@ console.log(form)
           <div className="userName form-row">
              <label htmlFor="title">Blog Title <span className="star">*</span></label>
              <input type="text" id="title" name="title" value={form.title} onChange={handleInputChange} className='post-input' required/>       
-          </div>  
+          </div>
+  
           <div className="post form-row">
              <label htmlFor="post">Blog Post <span className="star">*</span></label>
              <br/><br/>
