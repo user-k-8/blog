@@ -1,31 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Navbar';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import axios from "axios";
+import {Context} from "../context/Context";
 
 const Login = () => {
-    
-  const navigate = useNavigate();
-    const [form, setForm] = React.useState( {
-        email:"",
-       password:"",  
-     
-    }); 
-     
-const handleInputChange = event=>{
 
-    const {name, value, type, checked} = event.target
-    setForm({...form, [name]: type==='checkbox' ? checked : value})
-  }
+  const userRef = useRef();
+  const passwordRef = useRef();
+  const { dispatch, isFetching } = useContext(Context);
     
 
-const handleSubmit =  (event)=>{
-    event.preventDefault()
-  
-    alert('Login successful!');
-    navigate('/blog')
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
     }
+  };
+
+
   return (
     <>
 
@@ -36,17 +37,18 @@ const handleSubmit =  (event)=>{
               <form onSubmit={handleSubmit}>
           <div className="name-container form-row">
             <div>
-             <label htmlFor="email">Email<span className="star">*</span></label>
-             <input type="email" id="email" name="email" value={form.email}  onChange={handleInputChange} className='post-input'   required/>     
+             <label htmlFor="username">Username<span className="star">*</span></label>
+             <input type="text" id="username" name="username"   placeholder="Enter your username..." className='post-input' ref={userRef}   required/>     
           </div>      
         </div>
         <div className="userPassword form-row">
              <label htmlFor="password">Password <span className="star">*</span></label>
-             <input type="text" id="password" name="password" value={form.password} className='post-input'  onChange={handleInputChange}/>
+             <input type="password" id="password" name="password" className='post-input'  placeholder="Enter your password..."
+          ref={passwordRef}/>
           </div>
      
           <br/>
-          <input type="submit" value="Submit" className='blog-btn' />
+          <input type="submit" value="Submit" className='blog-btn' disabled={isFetching} />
         
        </form>
 
