@@ -21,7 +21,7 @@ function App() {
                   <Route exact path = "/addpost" element={<AddPost/>} />
                   <Route exact path = "/login" element={<Login/>} />
                   <Route exact path = "/register" element={<Register/>} />
-                  <Route exact path = "/editpost" element={<EditPost/>} />
+                   <Route exact path="/editpost" element={<EditPost/>}/>
                </Routes>       
           </BrowserRouter>
         </>

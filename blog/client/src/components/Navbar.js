@@ -1,11 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from './img/logo2.png'
 import  bars from './img/bars.png'
 const Navbar = () => {
-
+  const navigate = useNavigate()
   const mobile = window.innerWidth<=768? true: false;
   const [menuOpened, setMenuOpened] = React.useState(false)
+
+  const checkLogin= ()=>{
+    const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
+    if(storedUser){
+      console.log('yes')
+      navigate('/addpost')
+    }
+    else{
+      alert('You are not signed in! Log in to create post')
+    }
+  }
   return (
     <div className='nav-container'>
         <div className='logo-container'>
@@ -22,9 +33,8 @@ const Navbar = () => {
               
               onClick={()=>{setMenuOpened(false)}}>✖ Close</button>
              <Link to="/" className='nav-txt'><span>Home</span></Link>
-              <Link to="/blog" className='nav-txt'><span>Blog</span></Link>
-              <Link  className='nav-txt'><span>Login</span></Link>
-              <Link to="/addpost" className='nav-txt'><span>Create-post</span></Link>
+              <Link to="/login"  className='nav-txt'><span>Login</span></Link>
+              <span className='nav-txt' onClick={checkLogin}>Create-post</span>
            </div>)
 }
     </div>

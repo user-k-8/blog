@@ -7,14 +7,14 @@ import {
 
 const AddPost = () => {
 
-
+  const storedUser= JSON.parse(localStorage.getItem("blogLogin"));
  const navigate = useNavigate()
   const [form, setForm] = useState( {
     author:"",
    date:"",
     post:"", 
    title:"",
-   email:""
+   email: storedUser.userEmail
  
 }); 
 
@@ -28,13 +28,30 @@ setForm({...form, [name]: type==='checkbox' ? checked : value})
 }
 
 
-
-
-const handleSubmit = async (e)=>{
-  e.preventDefault();
+const handleSubmit = (e)=>{
+   e.preventDefault();
+  const fullFormData = new FormData();
+  for (let key in form) {
+      fullFormData.append(key, form[key]);
+  }
+ if(selectedFiles1){
+  fullFormData.append('images', selectedFiles1)
+ }
+ if(selectedFiles2){
+  fullFormData.append('images', selectedFiles2)
+ }
+  try {
+    const response =  fetch('http://localhost:4000/posts/api/upload', {
+      method: 'POST',
+      body: fullFormData,
+    });
+  
+  } catch (error) {
+    console.error('Error:', error);
+  }
 
 alert('Blog post created!');
-navigate('/blog')
+navigate('/')
 console.log(form)
 
 }
@@ -63,13 +80,6 @@ console.log(form)
              <input type="text" id="author" name="author" value={form.author}  onChange={handleInputChange} className='post-input' required/>     
           </div>      
         </div>
-        <div className="form-row">
-            <div>
-             <label htmlFor="email">Account email <span className="star">*</span></label>
-             <br/><br/>
-             <input type="email" id="email" name="email" value={form.email}  onChange={handleInputChange} className='post-input' required/>     
-          </div>      
-        </div>
         <div className="date form-row">
              <label htmlFor="date">Date <span className="star">*</span></label>
              <br/><br/>
@@ -79,7 +89,16 @@ console.log(form)
              <label htmlFor="title">Blog Title <span className="star">*</span></label>
              <input type="text" id="title" name="title" value={form.title} onChange={handleInputChange} className='post-input' required/>       
           </div>
-  
+          <div className='form-row'>
+                 <label htmlFor='blog_img1'>Upload Image 1 <span className="star">*</span></label>
+                 <br/><br/>
+                <input  type='file' name='images' id='blog_img1' placeholder='Upload Image' onChange={(e) => setSelectedFiles1(e.target.files[0])} className='post-input' required/>
+            </div>   
+            <div className='form-row'>
+                 <label htmlFor='blog_img2'>Upload Image 2 <span className="star">*</span></label>
+                 <br/><br/>
+                <input  type='file' name='images' id='blog_img2' placeholder='Upload Image' onChange={(e) => setSelectedFiles2(e.target.files[0])} className='post-input' required/>
+            </div>   
           <div className="post form-row">
              <label htmlFor="post">Blog Post <span className="star">*</span></label>
              <br/><br/>

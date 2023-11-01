@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'
 import BlogPostCard from './BlogPostCard'
-import posts from '../data/posts.json';
 import {connect} from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Footer from './Footer'
 
 const Blog = (props) => {
-  const dispatch = useDispatch()
-  
+
+
+const [backendData, setBackendData] =useState([])
+const fetchData =()=>{
+    fetch("http://localhost:4000/posts/api/allposts").then(
+      response => response.json()
+    ).then(
+      data=> {
+        setBackendData(data)
+      }
+    ).catch(error => {
+      console.error('Error:', error);
+  });
+}
+fetchData();
+
+  if(!backendData){
+    return <div>Loading...</div>
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = props.blog_posts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = backendData.slice(indexOfFirstItem, indexOfLastItem);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -32,23 +47,19 @@ const Blog = (props) => {
             <Navbar/>
             <div className='hero-text'>
                 <h1>Melsoft <br/> Academy<br/> Blog</h1>
-                <h3>read and explore new tech insights</h3>
-              
+                <h3>read and explore new tech insights</h3> 
                <button className='hero-btn'>Get Started</button>
             </div>
         </div>
         <div className='blog-posts-container'>
-          <br/>
-          <h1 id='posts-top'>Our blog posts</h1>
-          <div className='blog-cards'>
-          {(typeof currentItems == 'undefined') ? (
-        <p>Loading...</p>
-      ):(
-        currentItems.map((item, i)=>(
-          <p key={i}><BlogPostCard element={item}/></p>
-        ))
-      )}
-                  
+            <br/>
+            <h1 id='posts-top'>Our blog posts</h1>
+            <div className='blog-cards'>
+                 {currentItems ? (
+                    currentItems.map((item, i)=>(
+                   <p key={i}><BlogPostCard element={item}/></p>
+                    ))
+                    ) :<p>Loading...</p> }        
             </div>
             <br/>
             <div className='load-buttons-container'>

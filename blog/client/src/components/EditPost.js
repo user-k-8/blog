@@ -1,22 +1,29 @@
 import React from 'react'
 import Navbar from './Navbar'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   useState
 } from "react"; 
 const EditPost = () => {
  
+   const location = useLocation();
+   const {element} = location.state;
+
     const navigate = useNavigate()
     const [form, setForm] = useState( {
-      author:"",
-     date:"",
-      post:"", 
-     title:"",
-     email:""
+      author: element.author,
+      date: element.date,
+      post: element.post, 
+      title: element.title,
+      email: element.email,
+      id:element.id,
+      user_comments: ""
    
   }); 
   
- 
+  const [selectedFiles1, setSelectedFiles1] = useState(null);
+  const [selectedFiles2, setSelectedFiles2] = useState(null);
+
   const handleInputChange = event=>{
   
   const {name, value, type, checked} = event.target
@@ -27,9 +34,30 @@ const EditPost = () => {
   const handleSubmit = async (e)=>{
      e.preventDefault();
    
-  
-  alert('Blog post created!');
-  navigate('/blog')
+     const fullFormData = new FormData();
+     for (let key in form) {
+         fullFormData.append(key, form[key]);
+     }
+    if(selectedFiles1){
+     fullFormData.append('images', selectedFiles1)
+    }
+    if(selectedFiles2){
+     fullFormData.append('images', selectedFiles2)
+    }
+
+     try {
+       const response = await  fetch('http://localhost:4000/posts/api/editpost', {
+        method: 'POST',
+        body: fullFormData,
+      });
+       const data = await response.text();
+       console.log(data);
+     } catch (error) {
+       console.error('Error:', error);
+     }
+   
+  alert('Blog post updated!');
+  navigate('/')
   console.log(form)
   
   }
@@ -52,13 +80,6 @@ const EditPost = () => {
                <input type="text" id="author" name="author" value={form.author}  onChange={handleInputChange} className='post-input' required/>     
             </div>      
           </div>
-          <div className="form-row">
-              <div>
-               <label htmlFor="email">Account email <span className="star">*</span></label>
-               <br/><br/>
-               <input type="email" id="email" name="email" value={form.email}  onChange={handleInputChange} className='post-input' required/>     
-            </div>      
-          </div>
           <div className="date form-row">
                <label htmlFor="date">Date <span className="star">*</span></label>
                <br/><br/>
@@ -68,6 +89,16 @@ const EditPost = () => {
                <label htmlFor="title">Blog Title <span className="star">*</span></label>
                <input type="text" id="title" name="title" value={form.title} onChange={handleInputChange} className='post-input' required/>       
             </div>
+            <div className='form-row'>
+                 <label htmlFor='blog_img1'>Upload Image 1 <span className="star">*</span></label>
+                 <br/><br/>
+                <input  type='file' name='images' id='blog_img1' placeholder='Upload Image' onChange={(e) => setSelectedFiles1(e.target.files[0])} className='post-input' required/>
+            </div>   
+            <div className='form-row'>
+                 <label htmlFor='blog_img2'>Upload Image 2 <span className="star">*</span></label>
+                 <br/><br/>
+                <input  type='file' name='images' id='blog_img2' placeholder='Upload Image' onChange={(e) => setSelectedFiles2(e.target.files[0])} className='post-input' required/>
+            </div> 
             <div className="post form-row">
                <label htmlFor="post">Blog Post <span className="star">*</span></label>
                <br/><br/>

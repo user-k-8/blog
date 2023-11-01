@@ -21,9 +21,35 @@ const handleInputChange = event=>{
 
 const handleSubmit =  (event)=>{
     event.preventDefault()
-  
-    alert('Login successful!');
-    navigate('/blog')
+    
+    fetch('http://localhost:4000/api/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(form)
+})
+.then(response => response.json())
+.then(data => {
+    // response data from the server
+    console.log('Response from server:', data);
+    localStorage.setItem('blogLogin', JSON.stringify(data));
+    if(data.status=="404"){
+      alert('Account does not exist! Enter correct email or register for an account')
+    }
+   else if(data.status=="401"){
+      alert('Password invalid!')
+    }
+    else{
+      localStorage.setItem('blogLogin', JSON.stringify(data));
+      alert('Login successful!');
+      navigate('/')
+      
+    }
+})
+.catch(error => {
+    console.log('Error:', error);
+});
     
     }
   return (
@@ -42,7 +68,7 @@ const handleSubmit =  (event)=>{
         </div>
         <div className="userPassword form-row">
              <label htmlFor="password">Password <span className="star">*</span></label>
-             <input type="text" id="password" name="password" value={form.password} className='post-input'  onChange={handleInputChange}/>
+             <input type="password" id="password" name="password" value={form.password} className='post-input'  onChange={handleInputChange}/>
           </div>
      
           <br/>

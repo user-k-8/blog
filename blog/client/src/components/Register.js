@@ -20,11 +20,34 @@ const Register = () => {
     
 const handleSubmit =  (event)=>{
    
-    event.preventDefault()
-  
+    event.preventDefault();
 
+    fetch('http://localhost:4000/api/register', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(form)
+})
+.then(response => {
+  //  response data from the server
+  console.log('server response', response.status)
+  if(response.status==409){
+    alert('Email already registered')
+  }
+  else{
     alert('Registration successful!');
     navigate('/login')
+    
+  }
+
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+    
+
+
     
     }
   return (
