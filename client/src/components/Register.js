@@ -72,6 +72,7 @@ const Register = () => {
 
           <br/>
           <input type="submit" value="Submit" className='blog-btn' />
+          {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}{error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}{error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}
         
        </form>
 
