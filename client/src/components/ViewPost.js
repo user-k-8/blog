@@ -18,7 +18,7 @@ const ViewPost = () => {
   const postId = element._id;
   const [post, setPost] = useState();
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [content, setContent] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
@@ -68,6 +68,8 @@ const ViewPost = () => {
             placeholder="title"
             className="star"
             onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+
           />
         ) : <h1>{post?.title}</h1> }
             <h3>Written by : {post?.author}</h3>
@@ -76,6 +78,11 @@ const ViewPost = () => {
           { user ? post?.username === user?.username && <button className='blog-btn' onClick={() => setUpdateMode(true)}>Edit </button> : null }
             <br/>
             { user ? post?.username === user?.username && <button className='blog-btn delete-btn' style={{display: element.display}} onClick={handleDelete}>Delete</button> : null }
+            {updateMode && (
+          <button className='blog-btn' onClick={handleUpdate}>
+            Update
+          </button>
+        )}
        </div>
             <p className='post-content'>  
             <img src={post?.image} alt='' className='view-post-img1'/>
