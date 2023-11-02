@@ -50,7 +50,6 @@ const ViewPost = () => {
       await axios.put(`/posts/${post._id}`, {
         username: user.username,
         title,
-        desc,
       });
       setUpdateMode(false)
     } catch (err) {}
@@ -64,7 +63,7 @@ const ViewPost = () => {
         {updateMode ? (
           <input
             type="text"
-            value={post?.title}
+            value={title}
             placeholder="title"
             className="star"
             onChange={(e) => setTitle(e.target.value)}
