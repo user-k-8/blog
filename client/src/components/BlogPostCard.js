@@ -7,6 +7,7 @@ const BlogPostCard = ({element}) => {
 
   const dispatch = useDispatch()
 
+  
 
     const handleSelect=()=>{
       dispatch({ type: 'SELECT_POST', payload: element});

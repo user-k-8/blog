@@ -21,6 +21,7 @@ const Login = () => {
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      window.location.replace("/blog");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
