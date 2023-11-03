@@ -6,13 +6,13 @@ const Comments = (props) => {
 
   const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selectedPost")))
  console.log(selected)
- const storedPost = JSON.parse(localStorage.getItem("selectedPost"));
+
   const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
 
   const [form, setForm] = useState( {
-    name: storedUser.userEmail,
+    name: storedUser? storedUser.userEmail :"",
    comment:"",
-  email: storedUser.userEmail
+  email: storedUser? storedUser.userEmail :""
 }); 
 
 const [commentForm, setCommentForm] =useState({commentButton:"Add Comment", formDisplay:"none"})
@@ -128,7 +128,7 @@ const handleComment = ()=>{
         <div className='comment-wrapper'>
               <h3>{element.name}</h3>
               <p>{element.comment}</p>
-              <button className='blog-btn'  style={{display: storedUser.userEmail == element.email ? "flex" : "none" }}  onClick={()=>{handleDelete(element)}}>Delete</button>
+              <button className='blog-btn'  style={{display: storedUser ? storedUser.userEmail == element.email ? "flex" : "none":"none" }}  onClick={()=>{handleDelete(element)}}>Delete</button>
         </div>
       )) :
       <p className='grey'>No comments</p>

@@ -51,7 +51,7 @@ const ViewPost = () => {
             <h1>{element.title}</h1>
             <h3>Written by : {element.author}</h3>
             <h3>Date : {element.date}</h3>
-            <div className='edit-btns' style={{display: storedUser.userEmail == element.email ? "flex" : "none" }}>
+            <div className='edit-btns' style={{display: storedUser ? storedUser.userEmail == element.email ? "flex" : "none":"none" }}>
            <Link to="/editpost" state={{element}}> <button className='blog-btn' >Edit </button></Link>
             <br/>
            <button className='blog-btn delete-btn'  onClick={handleDelete}>Delete</button>
