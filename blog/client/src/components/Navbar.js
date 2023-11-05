@@ -7,8 +7,8 @@ const Navbar = () => {
   const mobile = window.innerWidth<=768? true: false;
   const [menuOpened, setMenuOpened] = React.useState(false)
 
+  const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
   const checkLogin= ()=>{
-    const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
     if(storedUser){
       console.log('yes')
       navigate('/addpost')
@@ -16,6 +16,15 @@ const Navbar = () => {
     else{
       alert('You are not signed in! Log in to create post')
     }
+  }
+
+  const handleLogInOut =()=>{
+     if(storedUser){
+      localStorage.removeItem("blogLogin")
+     }
+     else{
+      navigate('/login')
+     }
   }
   return (
     <div className='nav-container'>
@@ -32,8 +41,9 @@ const Navbar = () => {
               style={{width:'fit-content' , display: window.innerWidth<'769' ? 'block' : 'none'}}
               
               onClick={()=>{setMenuOpened(false)}}>✖ Close</button>
-             <Link to="/" className='nav-txt'><span>Home</span></Link>
-              <Link to="/login"  className='nav-txt'><span>Login</span></Link>
+              <Link to="/" className='nav-txt'><span>Blog</span></Link>
+              <Link to="/register"  className='nav-txt'><span>Register</span></Link>
+              <span  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</span>
               <span className='nav-txt' onClick={checkLogin}>Create-post</span>
            </div>)
 }
