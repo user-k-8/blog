@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import storeReducer from './store/store'
 import { Provider } from 'react-redux';
 import {legacy_createStore as createStore} from 'redux'
+import {disableReactDevTools} from '@fvilers/disable-react-devtools'
 
-
+if(process.env.NODE_ENV === 'production') disableReactDevTools()
 const store = createStore(storeReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

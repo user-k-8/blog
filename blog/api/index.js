@@ -27,7 +27,7 @@ app.use('/posts', postsRoute)
 app.use('/comments', commentsRoute)
 
 app.use('/api', usersRoute)
-//
+
 app.listen(PORT, () => {
     console.log(`Server running on localhost: ${PORT}`)
 })

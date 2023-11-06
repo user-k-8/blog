@@ -30,6 +30,11 @@ const EditPost = () => {
   setForm({...form, [name]:  value})
   }
   
+  const navigateAndRefresh = (path) =>{
+
+    navigate(path);
+    window.location.reload();
+  }
   
   const handleSubmit = async (e)=>{
      e.preventDefault();
@@ -46,7 +51,7 @@ const EditPost = () => {
     }
 
      try {
-       const response = await  fetch('http://localhost:4000/posts/api/editpost', {
+       const response = await  fetch('https://blog-fzhg.onrender.com/posts/api/editpost', {
         method: 'POST',
         body: fullFormData,
       });
@@ -57,12 +62,11 @@ const EditPost = () => {
      }
    
   alert('Blog post updated!');
-  navigate('/')
-  console.log(form)
+  navigateAndRefresh('/')
   
   }
   
-  console.log(form)
+
   
     return (
       <div className='create-post-container'>
@@ -89,16 +93,6 @@ const EditPost = () => {
                <label htmlFor="title">Blog Title <span className="star">*</span></label>
                <input type="text" id="title" name="title" value={form.title} onChange={handleInputChange} className='post-input' required/>       
             </div>
-            <div className='form-row'>
-                 <label htmlFor='blog_img1'>Upload Image 1 <span className="star">*</span></label>
-                 <br/><br/>
-                <input  type='file' name='images' id='blog_img1' placeholder='Upload Image' onChange={(e) => setSelectedFiles1(e.target.files[0])} className='post-input' required/>
-            </div>   
-            <div className='form-row'>
-                 <label htmlFor='blog_img2'>Upload Image 2 <span className="star">*</span></label>
-                 <br/><br/>
-                <input  type='file' name='images' id='blog_img2' placeholder='Upload Image' onChange={(e) => setSelectedFiles2(e.target.files[0])} className='post-input' required/>
-            </div> 
             <div className="post form-row">
                <label htmlFor="post">Blog Post <span className="star">*</span></label>
                <br/><br/>

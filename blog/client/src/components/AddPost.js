@@ -27,6 +27,11 @@ const {name, value, type, checked} = event.target
 setForm({...form, [name]: type==='checkbox' ? checked : value})
 }
 
+const navigateAndRefresh = (path) =>{
+
+  navigate(path);
+  window.location.reload();
+}
 
 const handleSubmit = (e)=>{
    e.preventDefault();
@@ -41,7 +46,7 @@ const handleSubmit = (e)=>{
   fullFormData.append('images', selectedFiles2)
  }
   try {
-    const response =  fetch('http://localhost:4000/posts/api/upload', {
+    const response =  fetch('https://blog-fzhg.onrender.com/posts/api/upload', {
       method: 'POST',
       body: fullFormData,
     });
@@ -51,8 +56,8 @@ const handleSubmit = (e)=>{
   }
 
 alert('Blog post created!');
-navigate('/')
-console.log(form)
+navigateAndRefresh('/')
+
 
 }
 
@@ -89,16 +94,6 @@ console.log(form)
              <label htmlFor="title">Blog Title <span className="star">*</span></label>
              <input type="text" id="title" name="title" value={form.title} onChange={handleInputChange} className='post-input' required/>       
           </div>
-          <div className='form-row'>
-                 <label htmlFor='blog_img1'>Upload Image 1 <span className="star">*</span></label>
-                 <br/><br/>
-                <input  type='file' name='images' id='blog_img1' placeholder='Upload Image' onChange={(e) => setSelectedFiles1(e.target.files[0])} className='post-input' required/>
-            </div>   
-            <div className='form-row'>
-                 <label htmlFor='blog_img2'>Upload Image 2 <span className="star">*</span></label>
-                 <br/><br/>
-                <input  type='file' name='images' id='blog_img2' placeholder='Upload Image' onChange={(e) => setSelectedFiles2(e.target.files[0])} className='post-input' required/>
-            </div>   
           <div className="post form-row">
              <label htmlFor="post">Blog Post <span className="star">*</span></label>
              <br/><br/>

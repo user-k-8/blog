@@ -21,11 +21,17 @@ const ViewPost = () => {
 
    const storedUser= JSON.parse(localStorage.getItem("blogLogin"));
 
+   const navigateAndRefresh = (path) =>{
+
+    navigate(path);
+    window.location.reload();
+  }
+
   const handleDelete =()=>{
 
     try {
       console.log(element)
-      const response =  fetch('http://localhost:4000/posts/api/deletePost', {
+      const response =  fetch('https://blog-fzhg.onrender.com/posts/api/deletePost', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +46,7 @@ const ViewPost = () => {
     }
     dispatch({ type: 'DELETE_POST', payload: element.post});
     alert('Blog post deleted!');
-    navigate('/')
+    navigateAndRefresh('/')
 
 }
   return (

@@ -34,7 +34,7 @@ router.post('/api/upload', upload.array('images', 2), async (req, res) => {
     console.log(tempPath)
     const ext = file.originalname.split('.').pop();
    
-    const targetPath = `../client/public/images/${file.filename}.${ext}`;
+    const targetPath = `./images/${file.filename}.${ext}`;
 
     fs.rename(tempPath, targetPath, err => {
         if (err) return console.log('Something went wrong');

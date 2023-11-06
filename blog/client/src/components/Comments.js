@@ -37,7 +37,7 @@ else{
   newPost.user_comments = [form]
 }
 
-fetch('http://localhost:4000/comments/api/addComment', {
+fetch('https://blog-fzhg.onrender.com/comments/api/addComment', {
   method: 'POST',
   headers: {
       'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const handleDelete =(element)=>{
   console.log('index', commentIndex);
   newPost.user_comments = newPost.user_comments.filter(item=> item != newPost.user_comments[commentIndex])
 
-  fetch('http://localhost:4000/comments/api/deleteComment', {
+  fetch('https://blog-fzhg.onrender.com/comments/api/deleteComment', {
     method: 'DELETE',
     headers: {
         'Content-Type': 'application/json'
@@ -99,12 +99,18 @@ const handleDelete =(element)=>{
 
 const handleComment = ()=>{
  
-  if(commentForm.commentButton=="Add Comment"){
-  setCommentForm({commentButton:"Close", formDisplay:"flex"})
+  if(storedUser){
+         if(commentForm.commentButton=="Add Comment"){
+            setCommentForm({commentButton:"Close", formDisplay:"flex"})
+            }
+         else{
+            setCommentForm({commentButton:"Add Comment", formDisplay:"none"})
+           }
+ }else{
+          alert("You must be logged in to comment!")
   }
-  else{
-    setCommentForm({commentButton:"Add Comment", formDisplay:"none"})
-  }
+
+
 }
 
   return (

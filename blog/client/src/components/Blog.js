@@ -7,10 +7,11 @@ import Footer from './Footer'
 
 const Blog = (props) => {
 
+  // https://blog-fzhg.onrender.com
+  const [backendData, setBackendData] =useState([])
 
-const [backendData, setBackendData] =useState([])
 const fetchData =()=>{
-    fetch("http://localhost:4000/posts/api/allposts").then(
+    fetch("https://blog-fzhg.onrender.com/posts/api/allposts").then(
       response => response.json()
     ).then(
       data=> {
@@ -27,7 +28,7 @@ fetchData();
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 6;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = backendData.slice(indexOfFirstItem, indexOfLastItem);

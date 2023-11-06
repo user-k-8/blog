@@ -22,7 +22,7 @@ const handleSubmit =  (event)=>{
    
     event.preventDefault();
 
-    fetch('http://localhost:4000/api/register', {
+    fetch('https://blog-fzhg.onrender.com/api/register', {
   method: 'POST',
   headers: {
       'Content-Type': 'application/json'
