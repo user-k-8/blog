@@ -22,12 +22,14 @@ const postsRoute = require('./routes/posts')
 const commentsRoute = require('./routes/comments')
 const usersRoute = require('./routes/users')
 
-
+app.get('/', (req, res)=>{
+  res.send("Server is running")
+})
 app.use('/posts', postsRoute)
 app.use('/comments', commentsRoute)
 
 app.use('/api', usersRoute)
-//
+
 app.listen(PORT, () => {
     console.log(`Server running on localhost: ${PORT}`)
 })
