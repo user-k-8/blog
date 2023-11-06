@@ -1,9 +1,10 @@
-import React, { useState , useEffect} from 'react'
 import Navbar from './Navbar'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Comments from './Comments';
 import Footer from './Footer';
 import { useDispatch } from 'react-redux';
+import img1 from './img/c.jpg'
+import img2 from './img/a.jpg'
 
 const ViewPost = () => {
 
@@ -63,13 +64,13 @@ const ViewPost = () => {
            <button className='blog-btn delete-btn'  onClick={handleDelete}>Delete</button>
        </div>
             <p className='post-content'>  
-            <img src={element.blog_img1} alt='' className='view-post-img1'/>
+            <img src={img1} alt='' className='view-post-img1'/>
             <span >{section1}</span>     
             </p>
             <p className='post-content'>  
             
            
-            <img src={element.blog_img2} alt='' className='view-post-img2'/>
+            <img src={img2} alt='' className='view-post-img2'/>
             <span >{section2}</span>    
             </p>
            
