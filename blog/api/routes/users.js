@@ -2,7 +2,7 @@ const express= require('express');
 const router = express.Router()
 const fs = require('fs');
 const fsPromises = require('fs').promises;
-const multer = require('multer')
+const multer = require('multer');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
