@@ -2,8 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const bodyParser =require('body-parser');
 const fsPromises = require('fs').promises;
-const multer = require('multer')
-const bcrypt = require('bcrypt');
+const multer = require('multer');
 const path = require('path');
 
 const router = express.Router();
