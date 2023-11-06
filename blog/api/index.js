@@ -3,8 +3,6 @@ const cors = require('cors');
 const bodyParser =require('body-parser');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
-const multer = require('multer')
-const bcrypt = require('bcrypt');
 const path = require('path');
 
 
