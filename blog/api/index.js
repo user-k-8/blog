@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser =require('body-parser');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
+const multer = require('multer')
+const bcrypt = require('bcrypt');
 const path = require('path');
 
 
@@ -16,13 +18,20 @@ const PORT = process.env.PORT || 4000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use((req, res,next)=>{
+  if(req.method === 'GET' && (req.url==='/' || req.url ==='/favicon.ico')){
+    console.log("Received unwanted get request", req.url)
+
+    return res.status(403).send('Unwanted get requests not allowed')
+  }
+  next()
+})
+
 const postsRoute = require('./routes/posts')
 const commentsRoute = require('./routes/comments')
 const usersRoute = require('./routes/users')
 
-app.get('/', (req, res)=>{
-  res.send("Server is running")
-})
+
 app.use('/posts', postsRoute)
 app.use('/comments', commentsRoute)
 
