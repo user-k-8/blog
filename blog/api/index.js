@@ -19,19 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-const alphanumericBeforeSlashRegex = /^\/\w+\//;
-const alphanumericBeforeFaviconRegex = /^\/\w+\/favicon\.ico$/;
-
-app.get(alphanumericBeforeSlashRegex, (req, res) => {
-  res.redirect('/static-page');
-});
-app.get(alphanumericBeforeFaviconRegex, (req, res) => {
-  res.redirect('/static-page');
-});
-
-app.get('/static-page', (req, res)=>{
-  res.send("Welcome")
-})
 
 const postsRoute = require('./routes/posts')
 const commentsRoute = require('./routes/comments')
