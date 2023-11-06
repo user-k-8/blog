@@ -18,12 +18,21 @@ const PORT = process.env.PORT || 4000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+const alphanumericBeforeSlashRegex = /^\/\w+\//;
+const alphanumericBeforeFaviconRegex = /^\/\w+\/favicon\.ico$/;
+
+app.get(alphanumericBeforeSlashRegex, (req, res) => {
+  res.redirect('/static-page');
+});
+app.get(alphanumericBeforeFaviconRegex, (req, res) => {
+  res.redirect('/static-page');
+});
+
 app.get('/', (req, res)=>{
   res.redirect('/static-page')
 })
-// app.get('/favicon.ico', (req, res)=>{
-//   res.redirect('/static-page')
-// })
+
 app.get('/static-page', (req, res)=>{
   res.send("Welcome")
 })
