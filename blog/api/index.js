@@ -29,10 +29,6 @@ app.get(alphanumericBeforeFaviconRegex, (req, res) => {
   res.redirect('/static-page');
 });
 
-app.get('/', (req, res)=>{
-  res.redirect('/static-page')
-})
-
 app.get('/static-page', (req, res)=>{
   res.send("Welcome")
 })
