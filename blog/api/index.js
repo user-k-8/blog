@@ -18,13 +18,14 @@ const PORT = process.env.PORT || 4000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use((req, res,next)=>{
-  if(req.method === 'GET' && (req.url==='/' || req.url ==='/favicon.ico')){
-    console.log("Received unwanted get request", req.url)
-
-    return res.status(403).send('Unwanted get requests not allowed')
-  }
-  next()
+app.get('/', (req, res)=>{
+  res.redirect('/static-page')
+})
+// app.get('/favicon.ico', (req, res)=>{
+//   res.redirect('/static-page')
+// })
+app.get('/static-page', (req, res)=>{
+  res.send("Welcome")
 })
 
 const postsRoute = require('./routes/posts')
