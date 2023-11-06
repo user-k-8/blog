@@ -18,6 +18,8 @@ const PORT = process.env.PORT || 4000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+
 const postsRoute = require('./routes/posts')
 const commentsRoute = require('./routes/comments')
 const usersRoute = require('./routes/users')
