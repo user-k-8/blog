@@ -15,7 +15,7 @@ const fetchData =()=>{
       response => response.json()
     ).then(
       data=> {
-        setBackendData(data)
+          setBackendData(data)
       }
     ).catch(error => {
       console.error('Error:', error);
@@ -56,11 +56,11 @@ fetchData();
             <br/>
             <h1 id='posts-top'>Our blog posts</h1>
             <div className='blog-cards'>
-                 {currentItems ? (
+                 {currentItems.length>0 ? (
                     currentItems.map((item, i)=>(
                    <p key={i}><BlogPostCard element={item}/></p>
                     ))
-                    ) :<p>Loading...</p> }        
+                    ) :<p className='loading-text'>Loading...</p> }        
             </div>
             <br/>
             <div className='load-buttons-container'>
