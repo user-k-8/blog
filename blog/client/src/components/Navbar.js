@@ -21,7 +21,7 @@ const Navbar = () => {
   const handleLogInOut =()=>{
      if(storedUser){
       localStorage.removeItem("blogLogin")
-      navigate('/blog')
+      navigate('/')
      }
      else{
       navigate('/login')
