@@ -24,7 +24,7 @@ const fetchData =()=>{
 fetchData();
 
   if(!backendData){
-    return <div>Loading...</div>
+    return <div  className='loading-text'>Loading...</div>
   }
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,13 +43,13 @@ fetchData();
     }
   };
   return (
-    <div className='blog-container'>
+    <div className='blog-container' id='top'>
             <div className='blog-hero'>
             <Navbar/>
             <div className='hero-text'>
                 <h1>Melsoft <br/> Academy<br/> Blog</h1>
                 <h3>read and explore new tech insights</h3> 
-               <button className='hero-btn'>Get Started</button>
+                 <a href='#posts-top'><button className='hero-btn'>Get Started</button></a>
             </div>
         </div>
         <div className='blog-posts-container'>

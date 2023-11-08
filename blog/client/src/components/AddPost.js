@@ -71,10 +71,10 @@ console.log(form)
                 <h1>Share your <br/> insights</h1>
                 <h3>write a blog post<br/> about fascinating tech</h3>
               
-               <button className='hero-btn create-post-hero-btn'>Start writing</button>
+               <a href='#createPost'><button className='hero-btn create-post-hero-btn'>Start writing</button></a>
             </div>
         </div>
-        <div className='post-form-container'>
+        <div className='post-form-container'  id='createPost'>
               <h1>Create a blog post</h1>
 
               <form onSubmit={handleSubmit}>

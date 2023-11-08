@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from './img/logo2.png'
 import  bars from './img/bars.png'
+import { HashLink as Link } from 'react-router-hash-link';
+
 const Navbar = () => {
   const navigate = useNavigate()
   const mobile = window.innerWidth<=768? true: false;
@@ -42,8 +44,8 @@ const Navbar = () => {
               style={{width:'fit-content' , display: window.innerWidth<'769' ? 'block' : 'none'}}
               
               onClick={()=>{setMenuOpened(false)}}>✖ Close</button>
-              <Link to="/" className='nav-txt'><span>Blog</span></Link>
-              <Link to="/register"  className='nav-txt'><span>Register</span></Link>
+              <Link to= {{pathname:`/`, hash: "top"}} className='nav-txt'><span>Blog</span></Link>
+              <Link to= {{pathname:`/register`, hash: "top"}}  className='nav-txt'><span>Register</span></Link>
               <span  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</span>
               <span className='nav-txt' onClick={checkLogin}>Create-post</span>
            </div>)
