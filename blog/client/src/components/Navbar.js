@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from './img/logo2.png'
 import  bars from './img/bars.png'
 import { HashLink as Link } from 'react-router-hash-link';
