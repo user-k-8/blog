@@ -17,6 +17,9 @@ const Navbar = () => {
       setPostPath('/addpost')
       setPath('/')
     }
+    else{
+      setPath('/login')
+    }
   },[])
 
   const checkLogin= ()=>{
