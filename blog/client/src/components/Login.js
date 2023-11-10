@@ -53,8 +53,7 @@ const handleSubmit =  (event)=>{
     
     }
   return (
-    <>
-
+    <div id='login-top'>
     <Navbar/>
     <div className='post-form-container login-container'>
               <h1 className='login-heading'>Login to your account</h1>
@@ -77,7 +76,7 @@ const handleSubmit =  (event)=>{
        </form>
 
         </div>
-    </>
+    </div>
   )
 }
 

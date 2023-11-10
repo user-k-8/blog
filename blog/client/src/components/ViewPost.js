@@ -52,7 +52,7 @@ const ViewPost = () => {
 }
   return (
     <>
-    <div className='view-post-container'  id='top'>
+    <div className='view-post-container'  id='view-top'>
         <Navbar/>
         <div className='view-post-wrapper'>
             <h1>{element.title}</h1>

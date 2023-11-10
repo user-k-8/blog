@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'
 import BlogPostCard from './BlogPostCard'
 import {connect} from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import {ClipLoader} from 'react-spinners';
 import Footer from './Footer'
 
 const Blog = (props) => {
@@ -60,7 +60,7 @@ fetchData();
                     currentItems.map((item, i)=>(
                    <p key={i}><BlogPostCard element={item}/></p>
                     ))
-                    ) :<p className='loading-text'>Loading...</p> }        
+                    ) :<p className='loading-text'>Loading...  <ClipLoader color={'white'} size={40}/></p> }        
             </div>
             <br/>
             <div className='load-buttons-container'>

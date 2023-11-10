@@ -51,10 +51,9 @@ const handleSubmit =  (event)=>{
     
     }
   return (
-    <>
-
+<div id='register-top' >
     <Navbar/>
-    <div className='post-form-container login-container' id='top'>
+    <div className='post-form-container login-container'>
               <h1 className='login-heading'>Register for an account</h1>
               <Link to="/login"><button className='blog-btn' >Have an account? Login ▶</button></Link>
               <form onSubmit={handleSubmit}>
@@ -75,7 +74,7 @@ const handleSubmit =  (event)=>{
        </form>
 
         </div>
-    </>
+    </div>
   )
 }
 

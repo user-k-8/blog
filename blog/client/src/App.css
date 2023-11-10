@@ -12,6 +12,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+
 .nav-container{
     display: flex;
     align-items: center;
@@ -381,7 +382,7 @@ color: black;
 }
 .post-form-container{
     margin-top: 4.5rem;
-    padding-top: 2rem;
+    padding-top: 5rem;
     min-height: 100vh;
     color: rgb(255, 255, 255);
    font-weight: 600;
@@ -550,6 +551,8 @@ input,select,textarea {
     color: white;
     font-size:50px;
 }
+
+
 @media screen and (max-width:991px ){
     .view-post-wrapper>h1{
         font-size: 3rem;

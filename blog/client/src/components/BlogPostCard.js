@@ -19,7 +19,7 @@ const BlogPostCard = ({element}) => {
        <h3>{element.author} - <br/> {element.date}</h3>
         <p className='center'>{element.title}</p>
         <div className='card-btns'>
-           <Link to= {{pathname:`/viewpost`, hash: "top"}}  state={{element}} onClick={handleSelect}><button className='blog-btn' >Read More</button></Link>  
+           <Link to= {{pathname:`/viewpost`, hash: "view-top"}}  state={{element}} onClick={handleSelect}><button className='blog-btn' >Read More</button></Link>  
         </div>
     </div>
 </div>

@@ -19,9 +19,9 @@ const [commentForm, setCommentForm] =useState({commentButton:"Add Comment", form
 const [load, setLoad] =React.useState(false)
 
 const handleInputChange = event=>{
-
 const {name, value, type, checked} = event.target
 setForm({...form, [name]: type==='checkbox' ? checked : value})
+
 }
 
 const handleSubmit = (event)=>{

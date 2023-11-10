@@ -69,7 +69,7 @@ const EditPost = () => {
 
   
     return (
-      <div className='create-post-container'>
+      <div className='create-post-container' id='edit-top'>
            <div>
               <Navbar/>
           </div>

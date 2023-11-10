@@ -1,36 +1,47 @@
-import React from 'react';
+import React, { useState , useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from './img/logo2.png'
 import  bars from './img/bars.png'
 import { HashLink as Link } from 'react-router-hash-link';
 
 const Navbar = () => {
-  const navigate = useNavigate()
   const mobile = window.innerWidth<=768? true: false;
   const [menuOpened, setMenuOpened] = React.useState(false)
 
   const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
-  const checkLogin= ()=>{
+  const [postPath, setPostPath] =useState('')
+  const [path, setPath]= useState('')
+
+  useEffect(()=>{
     if(storedUser){
-      console.log('yes')
-      navigate('/addpost')
+      setPostPath('/addpost')
+      setPath('/')
+    }
+  },[])
+
+  const checkLogin= ()=>{
+    if(!storedUser){
+      alert('You are not signed in! Log in to create post')
+     
     }
     else{
-      alert('You are not signed in! Log in to create post')
+      setPostPath('/addpost')
     }
   }
 
+
   const handleLogInOut =()=>{
+    
      if(storedUser){
       localStorage.removeItem("blogLogin")
-      navigate('/')
      }
      else{
-      navigate('/login')
+     setPath('/login')
+      
      }
   }
   return (
-    <div className='nav-container'>
+    <div className='nav-container' >
         <div className='logo-container'>
                  <img src={logo} alt=''  className='logo'/>
                  <span>Melsoft Academy</span>
@@ -45,9 +56,9 @@ const Navbar = () => {
               
               onClick={()=>{setMenuOpened(false)}}>✖ Close</button>
               <Link to= {{pathname:`/`, hash: "top"}} className='nav-txt'><span>Blog</span></Link>
-              <Link to= {{pathname:`/register`, hash: "top"}}  className='nav-txt'><span>Register</span></Link>
-              <span  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</span>
-              <span className='nav-txt' onClick={checkLogin}>Create-post</span>
+              <Link to= {{pathname:`/register`, hash: "register-top"}}  className='nav-txt'><span>Register</span></Link>
+              <Link to= {{pathname:path, hash: "login-top"}}  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</Link>
+              <Link to= {{pathname:postPath, hash: "view-top"}} className='nav-txt' onClick={checkLogin}>Create-post</Link>
            </div>)
 }
     </div>

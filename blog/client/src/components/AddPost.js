@@ -64,7 +64,7 @@ navigateAndRefresh('/')
 console.log(form)
 
   return (
-    <div className='create-post-container'>
+    <div className='create-post-container' id='create-top'>
          <div className='create-post-hero'>
             <Navbar/>
             <div className='create-post-hero-text'>
