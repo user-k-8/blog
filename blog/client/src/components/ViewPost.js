@@ -47,11 +47,11 @@ const ViewPost = () => {
     }
     dispatch({ type: 'DELETE_POST', payload: element.post});
     alert('Blog post deleted!');
-    navigateAndRefresh('/')
+    navigateAndRefresh('/blog/client')
 
 }
   return (
-    <>
+    
     <div className='view-post-container'  id='view-top'>
         <Navbar/>
         <div className='view-post-wrapper'>
@@ -82,7 +82,7 @@ const ViewPost = () => {
         <Footer/>
     </div>
    
-    </>
+    
   )
 }
 

@@ -62,7 +62,7 @@ const EditPost = () => {
      }
    
   alert('Blog post updated!');
-  navigateAndRefresh('/')
+  navigateAndRefresh('/blog/client')
   
   }
   

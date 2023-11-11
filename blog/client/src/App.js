@@ -15,7 +15,7 @@ function App() {
           <BrowserRouter>
                <Routes>
                   
-                  <Route exact path="/" element={<Blog/>}/>
+                  <Route exact path="/blog/client" element={<Blog/>}/>
                   <Route exact path ="/viewpost" element={<ViewPost/>}/>
                   <Route exact path = "/testimonial-details" element={<TestimonialDetails/>} />
                   <Route exact path = "/addpost" element={<AddPost/>} />
