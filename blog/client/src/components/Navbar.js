@@ -61,7 +61,7 @@ const Navbar = () => {
               <Link to= {{pathname:`/blog`, hash: "top"}} className='nav-txt'><span>Blog</span></Link>
               <Link to= {{pathname:`/register`, hash: "register-top"}}  className='nav-txt'><span>Register</span></Link>
               <Link to= {{pathname:path, hash: "login-top"}}  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</Link>
-              <Link to= {{pathname:postPath, hash: "view-top"}} className='nav-txt' onClick={checkLogin}>Create-post</Link>
+              <Link to= {{pathname:postPath, hash: "create-top"}} className='nav-txt' onClick={checkLogin}>Create-post</Link>
            </div>)
 }
     </div>
