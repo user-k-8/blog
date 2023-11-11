@@ -292,11 +292,11 @@ body{
 
 .load-btn{
     border: 2px solid #534eaa;
-    color: #9f5baa;
+    color: white;
     font-size: 1.5rem;
     text-align: center;
-    padding: 12px;
-    background: none;
+    padding: 12px 30px;
+    background:   linear-gradient(270deg, #534eaa 0%, #4b2a51 100%);
     font-weight: 600 !important;
     cursor: pointer;
     border-radius: 50px;
@@ -304,7 +304,7 @@ body{
 }
 
 .load-btn:hover{
-    background:   linear-gradient(270deg, #534eaa 0%, #4b2a51 100%);
+    background:   none;
     color: white;
 }
 

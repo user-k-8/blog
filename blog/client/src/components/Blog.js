@@ -4,7 +4,7 @@ import BlogPostCard from './BlogPostCard'
 import {connect} from 'react-redux';
 import {ClipLoader} from 'react-spinners';
 import Footer from './Footer'
-
+import { HashLink as Link } from 'react-router-hash-link';
 const Blog = (props) => {
 
   // https://blog-fzhg.onrender.com
@@ -45,18 +45,18 @@ const Blog = (props) => {
    });
   }}
 
-  const nextPage = (id) => {
+  const nextPage = () => {
      if(currentPage<maxPages){
         setCurrentPage(currentPage + 1);
-       pageScroll(id)
+       
      }
   };
 
-  const prevPage = (id) => {
+  const prevPage = () => {
     if (currentPage > 1) {
   
       setCurrentPage(currentPage - 1)
-      pageScroll(id)
+
     }
   }
 
@@ -82,12 +82,12 @@ const Blog = (props) => {
             </div>
             <br/>
             <div className='load-buttons-container'>
-            <a href='/blog#/#posts-top' className='load-btn' onClick={()=>{prevPage('posts-top')}} disabled={currentPage === 1}>
+            <Link smooth  to= {{pathname:'/', hash: "posts-top"}} className='load-btn' onClick={prevPage} style={{display: currentPage === 1  ? "none" :"flex"}}>
                Prev
-            </a>
-            <a href='/blog#/#posts-top' className='load-btn' onClick={()=>{nextPage('posts-top')}} disabled={currentPage===(maxPages)}>
+            </Link>
+            <Link smooth  to= {{pathname:'/', hash: "posts-top"}} className='load-btn' onClick={nextPage} style={{display: currentPage===(maxPages)  ? "none" :"flex"}} >
                    Next
-            </a>
+            </Link>
         </div>
         </div>
         <Footer/>
