@@ -1,6 +1,7 @@
 import React from 'react'
 import {HashLink as Link} from 'react-router-hash-link';
 import { useDispatch } from 'react-redux';
+import img from './img/MA.png'
 
 const BlogPostCard = ({element}) => {
 
@@ -13,7 +14,7 @@ const BlogPostCard = ({element}) => {
   return (
 <div className='destination-card'>
     <div className='card-image'>
-           <img src={element.img} alt=''/>
+           <img src={img} alt=''/>
     </div>
     <div className='card-text'>
        <h3>{element.author} - <br/> {element.date}</h3>
