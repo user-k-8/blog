@@ -15,7 +15,7 @@ const Navbar = () => {
   useEffect(()=>{
     if(storedUser){
       setPostPath('/addpost')
-      setPath('/blog/client')
+      setPath('/blog')
     }
     else{
       setPath('/login')
@@ -58,7 +58,7 @@ const Navbar = () => {
               style={{width:'fit-content' , display: window.innerWidth<'769' ? 'block' : 'none'}}
               
               onClick={()=>{setMenuOpened(false)}}>✖ Close</button>
-              <Link to= {{pathname:`/blog/client`, hash: "top"}} className='nav-txt'><span>Blog</span></Link>
+              <Link to= {{pathname:`/blog`, hash: "top"}} className='nav-txt'><span>Blog</span></Link>
               <Link to= {{pathname:`/register`, hash: "register-top"}}  className='nav-txt'><span>Register</span></Link>
               <Link to= {{pathname:path, hash: "login-top"}}  className='nav-txt' onClick={handleLogInOut}>{storedUser ? "Logout" : "Login"}</Link>
               <Link to= {{pathname:postPath, hash: "view-top"}} className='nav-txt' onClick={checkLogin}>Create-post</Link>

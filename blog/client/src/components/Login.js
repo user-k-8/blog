@@ -43,7 +43,7 @@ const handleSubmit =  (event)=>{
     else{
       localStorage.setItem('blogLogin', JSON.stringify(data));
       alert('Login successful!');
-      navigate('/blog/client')
+      navigate('/blog')
       
     }
 })

@@ -47,7 +47,7 @@ const ViewPost = () => {
     }
     dispatch({ type: 'DELETE_POST', payload: element.post});
     alert('Blog post deleted!');
-    navigateAndRefresh('/blog/client')
+    navigateAndRefresh('/blog')
 
 }
   return (
