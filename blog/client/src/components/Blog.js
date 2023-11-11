@@ -33,16 +33,33 @@ const Blog = (props) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = backendData.slice(indexOfFirstItem, indexOfLastItem);
+  const maxPages = Math.ceil(backendData.length/itemsPerPage)
+ console.log(maxPages)
 
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
+  const pageScroll=(id)=>{
+    const element = document.getElementById(id);
+    if (element) {
+   element.scrollIntoView({
+     behavior: "smooth",
+     block: "start",
+   });
+  }}
+
+  const nextPage = (id) => {
+     if(currentPage<maxPages){
+        setCurrentPage(currentPage + 1);
+       pageScroll(id)
+     }
   };
 
-  const prevPage = () => {
+  const prevPage = (id) => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+  
+      setCurrentPage(currentPage - 1)
+      pageScroll(id)
     }
-  };
+  }
+
   return (
     <div className='blog-container' id='top'>
             <div className='blog-hero'>
@@ -50,7 +67,7 @@ const Blog = (props) => {
             <div className='hero-text'>
                 <h1>Melsoft <br/> Academy<br/> Blog</h1>
                 <h3>read and explore new tech insights</h3> 
-                 <a href='#posts-top'><button className='hero-btn'>Get Started</button></a>
+               <button className='hero-btn' onClick={()=>{pageScroll('posts-top')}}>Get Started</button>
             </div>
         </div>
         <div className='blog-posts-container'>
@@ -65,12 +82,12 @@ const Blog = (props) => {
             </div>
             <br/>
             <div className='load-buttons-container'>
-           <a href='#posts-top'> <button className='load-btn' onClick={prevPage} disabled={currentPage === 1}>
+            <a href='/blog#/#posts-top' className='load-btn' onClick={()=>{prevPage('posts-top')}} disabled={currentPage === 1}>
                Prev
-            </button></a>
-            <a href='#posts-top'>  <button className='load-btn' onClick={nextPage} disabled={currentItems.length < itemsPerPage}>
+            </a>
+            <a href='/blog#/#posts-top' className='load-btn' onClick={()=>{nextPage('posts-top')}} disabled={currentPage===(maxPages)}>
                    Next
-            </button></a>
+            </a>
         </div>
         </div>
         <Footer/>

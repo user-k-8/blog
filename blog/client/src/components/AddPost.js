@@ -58,8 +58,16 @@ const handleSubmit = (e)=>{
 alert('Blog post created!');
 navigateAndRefresh('/')
 
-
 }
+
+const pageScroll=(id)=>{
+  const element = document.getElementById(id);
+  if (element) {
+ element.scrollIntoView({
+   behavior: "smooth",
+   block: "start",
+ });
+}}
 
 console.log(form)
 
@@ -71,11 +79,11 @@ console.log(form)
                 <h1>Share your <br/> insights</h1>
                 <h3>write a blog post<br/> about fascinating tech</h3>
               
-               <a href='#createPost'><button className='hero-btn create-post-hero-btn'>Start writing</button></a>
+                 <button onClick={()=>{pageScroll('create-posts-top')}} className='hero-btn create-post-hero-btn'>Start writing</button>
             </div>
         </div>
         <div className='post-form-container'  id='createPost'>
-              <h1>Create a blog post</h1>
+              <h1 id='create-posts-top'>Create a blog post</h1>
 
               <form onSubmit={handleSubmit}>
           <div className="form-row">

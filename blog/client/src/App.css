@@ -300,6 +300,7 @@ body{
     font-weight: 600 !important;
     cursor: pointer;
     border-radius: 50px;
+    text-decoration: none;
 }
 
 .load-btn:hover{
