@@ -56,7 +56,7 @@ const handleSubmit = (e)=>{
   }
 
 alert('Blog post created!');
-navigateAndRefresh('/blog')
+navigateAndRefresh('/')
 
 
 }

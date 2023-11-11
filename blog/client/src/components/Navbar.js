@@ -15,7 +15,7 @@ const Navbar = () => {
   useEffect(()=>{
     if(storedUser){
       setPostPath('/addpost')
-      setPath('/blog')
+      setPath('/')
     }
     else{
       setPath('/login')
