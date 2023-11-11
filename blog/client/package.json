@@ -32,7 +32,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "predeploy": "cd blog/client && npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d blog/client/build",
     "start": "react-scripts start",
     "build": "react-scripts build",
