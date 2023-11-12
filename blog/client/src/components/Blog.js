@@ -22,7 +22,7 @@ const Blog = (props) => {
     ).catch(error => {
       console.error('Error:', error);
   })
-  },[])
+  },[backendData])
 
 
   if(!backendData){
@@ -60,9 +60,7 @@ const Blog = (props) => {
 
     }
   }
-  if(currentItems.length<1){
-    window.location.reload();
-  }
+ 
 
   return (
     <div className='blog-container' id='top'>
