@@ -21,7 +21,7 @@ const Blog = (props) => {
       }
     ).catch(error => {
       console.error('Error:', error);
-  });
+  })
   })
 
 
