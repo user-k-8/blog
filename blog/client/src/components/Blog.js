@@ -57,7 +57,6 @@ const fetchData = ()=>{
 
   const prevPage = () => {
     if (currentPage > 1) {
-  
       setCurrentPage(currentPage - 1)
 
     }
