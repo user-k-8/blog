@@ -10,8 +10,7 @@ const Blog = (props) => {
   // https://blog-fzhg.onrender.com
   const [backendData, setBackendData] =useState([])
 
-  useEffect(()=>{
-
+const fetchData=()=>{
     fetch("https://blog-fzhg.onrender.com/posts/api/allposts").then(
       response => response.json()
     ).then(
@@ -22,7 +21,8 @@ const Blog = (props) => {
       console.error('Error:', error);
   });
 
-  },[])
+  }
+  fetchData();
 
   if(!backendData){
     return <div  className='loading-text'>Loading...</div>
