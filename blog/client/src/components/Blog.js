@@ -21,7 +21,10 @@ const fetchData = ()=>{
       console.error('Error:', error);
   });
 }
-fetchData();
+
+  fetchData();
+
+
 
 
   if(!backendData){
