@@ -20,8 +20,8 @@ const fetchData = ()=>{
     ).catch(error => {
       console.error('Error:', error);
   });
-}
 
+}
   fetchData();
 
 
@@ -63,9 +63,12 @@ const fetchData = ()=>{
     }
   }
 
-  const refresh = ()=>{
-    window.location.reload();
-  }
+  useEffect(()=>{
+    if(currentItems.length<1){
+      fetchData();
+   }
+  })
+
 
   return (
     <div className='blog-container' id='top'>
