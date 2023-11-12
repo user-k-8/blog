@@ -22,7 +22,7 @@ const Blog = (props) => {
     ).catch(error => {
       console.error('Error:', error);
   })
-  })
+  },[])
 
 
   if(!backendData){
@@ -59,6 +59,9 @@ const Blog = (props) => {
       setCurrentPage(currentPage - 1)
 
     }
+  }
+  if(currentItems.length<1){
+    window.location.reload();
   }
 
   return (
