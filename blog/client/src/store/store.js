@@ -5,12 +5,20 @@ const initState ={
 
     blog_posts:posts,
     selected_post: "",
+    blogState:false
   
 
 }
 
 const storeReducer = (state=initState, action) =>{
 
+    if(action.type === 'BLOG_UPDATE'){
+
+        return{
+            ...state,
+            blogState: !state.blogState
+        }
+    }
 
 
    if(action.type ==='ADD_POST'){

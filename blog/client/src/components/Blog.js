@@ -10,9 +10,7 @@ const Blog = (props) => {
   // https://blog-fzhg.onrender.com
   const [backendData, setBackendData] =useState([])
 
-
-
-  useEffect(()=>{
+const fetchData = ()=>{
     fetch("https://blog-fzhg.onrender.com/posts/api/allposts").then(
       response => response.json()
     ).then(
@@ -21,8 +19,9 @@ const Blog = (props) => {
       }
     ).catch(error => {
       console.error('Error:', error);
-  })
-  },[backendData])
+  });
+}
+fetchData();
 
 
   if(!backendData){
@@ -60,7 +59,10 @@ const Blog = (props) => {
 
     }
   }
- 
+
+  const refresh = ()=>{
+    window.location.reload();
+  }
 
   return (
     <div className='blog-container' id='top'>
@@ -80,7 +82,10 @@ const Blog = (props) => {
                     currentItems.map((item, i)=>(
                    <p key={i}><BlogPostCard element={item}/></p>
                     ))
-                    ) :<p className='loading-text'>Loading...  <ClipLoader color={'white'} size={40}/></p> }        
+                    ) :<p className='loading-text'>
+                      Loading...  
+                      <ClipLoader color={'white'} size={40}/>
+                      </p> }        
             </div>
             <br/>
             <div className='load-buttons-container'>
