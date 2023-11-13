@@ -68,9 +68,9 @@ const fetchData = ()=>{
    }
 
   })
- const [loadButton, setLoadButton] = useState("block")
-  const handleLoad =()=>{
-      setLoadButton("none")
+
+  const handleLoad =(buttonObject)=>{
+     buttonObject.style.display = "none"
       window.location.reload()
   }
 
@@ -93,9 +93,8 @@ const fetchData = ()=>{
                     currentItems.map((item, i)=>(
                    <p key={i}><BlogPostCard element={item}/></p>
                     ))
-                    ) :<p className='loading-text' >               
-                       Loading...  
-                      <ClipLoader color={'white'} size={40}/>
+                    ) :<p className='loading-text'>
+                          <button onClick={(e)=>{handleLoad(e.target)}}  className='load-btn'>Click to load new posts ▶</button>
                       </p> }        
             </div>
             <br/>
