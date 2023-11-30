@@ -25,11 +25,11 @@ router.post('/api/addComment', async (req, res)=>{
             console.log('error')
         }
         else{
-            // res.send('updated')//////
+            res.send('updated')
             console.log('updated');
             
         }
-        // res.send(postsDB.posts)
+
     })
 
    res.send(postsDB.posts)

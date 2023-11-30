@@ -23,7 +23,7 @@ router.post('/register', async (req, res)=>{
    }else{
     
    
-    //encrypt the password//
+    //encrypt the password
     const hashedPwd = await bcrypt.hash(password, 10);
     //store the new user
     const newUser = { "email": email, "password": hashedPwd };
@@ -35,9 +35,9 @@ router.post('/register', async (req, res)=>{
              res.status(500).send('error')
         }
         else{
-            // res.send('updated')
+           
             console.log('user created')
-            // res.status(201).json({ 'success': `New user ${user} created!` });
+            res.status(201).json({ 'success': `New user ${user} created!` });
         }
     })
     return res.sendStatus(200)
