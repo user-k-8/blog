@@ -33,7 +33,7 @@ const ViewPost = () => {
     try {
       console.log(element)
       const response =  fetch('https://blog-fzhg.onrender.com/posts/api/deletePost', {
-        method: 'DELETE',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },

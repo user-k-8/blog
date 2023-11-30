@@ -93,7 +93,7 @@ router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
    });
 
 //delete
- router.delete('/api/deletePost', async (req, res)=>{
+ router.post('/api/deletePost', async (req, res)=>{
         
     const newPosts = postsDB.posts.filter(item=> item.id != req.body.id)
    postsDB.setUsers(newPosts)
