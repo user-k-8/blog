@@ -184,10 +184,12 @@ body{
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     border: 1.5px solid grey;
     margin-top: -1rem;
     padding-bottom: 1rem;
     border-radius: 10px;
+    min-height: 260px;
 }
 
 .card-text>h3{
@@ -207,8 +209,7 @@ body{
 .delete-btn{
     width: fit-content;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 1rem;
 }
 .center{
     text-align: center !important;
@@ -489,6 +490,10 @@ input,select,textarea {
     margin-bottom: 2rem;
     color: white;
 }
+.comment-wrapper>p{
+    width: 90%;
+    word-wrap: break-word;
+}
 .comment-form{
     width: 100%;
    display: flex;
@@ -513,17 +518,18 @@ input,select,textarea {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: fit-content;
-
+    padding-left: 1rem;
+    
     
 
 }
 .footer-col>h3{
     font-size: 1.8rem;
-    margin-top: -0.5rem;
+  line-height: 12px;
 }
-.footer-col>span{
+.footer-col>div{
     font-size: 1.2rem;
+    margin-top: 8px;
 }
 
 .footer-logo{
@@ -553,6 +559,12 @@ input,select,textarea {
     font-size:50px;
 }
 
+input::placeholder{
+    color: white;
+}
+input:focus{
+    outline: none11;
+}
 
 @media screen and (max-width:991px ){
     .view-post-wrapper>h1{
@@ -564,11 +576,16 @@ input,select,textarea {
 @media screen and (max-width:768px){
     .nav-elements{
         flex-direction: column;
-        padding-left: 1rem;
-        margin-top: 4rem;
+        padding-left: 8px;
+        margin-top: 2rem;
         width: 100%;
         padding-bottom: 1rem;
+        gap:2px;
     }
+    .nav-elements>div{
+        margin-top: 20px;
+    }
+
 
     .bars{
         position: fixed;
@@ -664,6 +681,10 @@ input,select,textarea {
     .blog-post-input{
         width: 70vw;
     }
+    .comment-wrapper>p{
+        width: 90%;
+        word-wrap: break-word;
+    }
 }
 
 @media screen and (max-width:390px){
@@ -717,7 +738,7 @@ input,select,textarea {
         font-size: 1.1rem;
     }
     .nav-elements{
-        padding-left: 1rem;
+        padding-left: 8px;
     }
 
     .view-post-wrapper>h1{
@@ -731,7 +752,11 @@ input,select,textarea {
     }
 
     .comment-wrapper{
-        width: 90%;
+        width: 80%;
        
+    }
+    .comment-wrapper>p{
+        width: 90%;
+        word-wrap: break-word;
     }
 }

@@ -23,26 +23,7 @@ router.get('/api/allposts', (req, res) => {
 
 //add post
 router.post('/api/upload', upload.array('images', 2), async (req, res) => {
-   // Process uploaded images
-   const files = req.files;
 
-  const imagePaths = [];
-  files.forEach((file)=>{
-
-    const tempPath = file.path;
-    console.log(tempPath)
-    const ext = file.originalname.split('.').pop();
-   
-    const targetPath = `./images/${file.filename}.${ext}`;
-
-    fs.rename(tempPath, targetPath, err => {
-        if (err) return console.log('Something went wrong');
-    
-        // res.status(200).json("Image has been uploaded")//
-        console.log('image uploaded')
-    })
-    imagePaths.push(`images/${file.filename}.${ext}`)
-  })
    // Create JSON object
  const newPost = 
     {id:`${postsDB.posts.length+1}`,
@@ -53,8 +34,8 @@ router.post('/api/upload', upload.array('images', 2), async (req, res) => {
     date: req.body.date,
     title: req.body.title, 
     post: req.body.post,
-    blog_img1: imagePaths[0],
-    blog_img2: imagePaths[1]
+    blog_img1:"",
+    blog_img2: ""
  }
 
     // Write data to JSON file
@@ -71,31 +52,13 @@ router.post('/api/upload', upload.array('images', 2), async (req, res) => {
             console.log('updated')
         }
     })
-    res.send('Files uploaded and data saved successfully.');
+    res.send('data saved successfully.');
   });
 
-  //edit post
-
+//edit post
 router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
-    // Process uploaded images
-    const files = req.files;
- 
-   const imagePaths = [];
-   files.forEach((file)=>{
- 
-     const tempPath = file.path;
-     const ext = file.originalname.split('.').pop();
-     const targetPath = `../client/public/images/${file.filename}.${ext}`;
- 
-     fs.rename(tempPath, targetPath, err => {
-         if (err) return res.status(500).send('Something went wrong');
-     
-          res.status(200).json("Image has been uploaded")
-         console.log('image uploaded')
-     })
-     imagePaths.push(`images/${file.filename}.${ext}`)
-   })
-    // Create JSON object
+   
+// Create JSON object
    
   const newPost = 
      {id: req.body.id,
@@ -106,8 +69,8 @@ router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
      date: req.body.date,
      title: req.body.title, 
      post: req.body.post,
-     blog_img1: imagePaths[0],
-     blog_img2: imagePaths[1]
+     blog_img1: "",
+     blog_img2: ""
   }
  
   let allUsers  =  postsDB.posts.filter(item=> item.id != req.body.id);
@@ -126,10 +89,10 @@ router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
              console.log('updated')
          }
      })
-     res.send('Files uploaded and data saved successfully.');
+     res.send('data saved successfully.');
    });
 
-   //delete ///
+//delete
  router.delete('/api/deletePost', async (req, res)=>{
         
     const newPosts = postsDB.posts.filter(item=> item.id != req.body.id)

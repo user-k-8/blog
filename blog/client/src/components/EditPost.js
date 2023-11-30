@@ -21,9 +21,6 @@ const EditPost = () => {
    
   }); 
   
-  const [selectedFiles1, setSelectedFiles1] = useState(null);
-  const [selectedFiles2, setSelectedFiles2] = useState(null);
-
   const handleInputChange = event=>{
   
   const {name, value, type, checked} = event.target
@@ -43,12 +40,6 @@ const EditPost = () => {
      for (let key in form) {
          fullFormData.append(key, form[key]);
      }
-    if(selectedFiles1){
-     fullFormData.append('images', selectedFiles1)
-    }
-    if(selectedFiles2){
-     fullFormData.append('images', selectedFiles2)
-    }
 
      try {
        const response = await  fetch('https://blog-fzhg.onrender.com/posts/api/editpost', {
