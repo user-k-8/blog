@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const bodyParser =require('body-parser');
 const fsPromises = require('fs').promises;
-const multer = require('multer');
 const path = require('path');
 
 const router = express.Router();
@@ -14,15 +13,13 @@ const postsDB = {
 
 let post = require('../data/posts.json');
 
-const upload = multer({dest:'./uploads'});
-
 //get all posts
 router.get('/api/allposts', (req, res) => {
     res.send(post)
 })
 
 //add post
-router.post('/api/upload', upload.array('images', 2), async (req, res) => {
+router.post('/api/upload', async (req, res) => {
 
    // Create JSON object
  const newPost = 
@@ -34,8 +31,6 @@ router.post('/api/upload', upload.array('images', 2), async (req, res) => {
     date: req.body.date,
     title: req.body.title, 
     post: req.body.post,
-    blog_img1:"",
-    blog_img2: ""
  }
 
     // Write data to JSON file
@@ -56,7 +51,7 @@ router.post('/api/upload', upload.array('images', 2), async (req, res) => {
   });
 
 //edit post
-router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
+router.post('/api/editpost',  async (req, res) => {
    
 // Create JSON object
    
@@ -68,9 +63,7 @@ router.post('/api/editpost', upload.array('images', 2), async (req, res) => {
      email: req.body.email,
      date: req.body.date,
      title: req.body.title, 
-     post: req.body.post,
-     blog_img1: "",
-     blog_img2: ""
+     post: req.body.post
   }
  
   let allUsers  =  postsDB.posts.filter(item=> item.id != req.body.id);
