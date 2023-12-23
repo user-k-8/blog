@@ -87,7 +87,7 @@ return (
             <div className="post form-row">
                <label htmlFor="post">Blog Post <span className="star">*</span></label>
                <br/><br/>
-               <textarea type="text" id="post" name="post" value={form.post} className='blog-post-input' onChange={handleInputChange} />
+               <textarea type="text" id="post" name="post" value={form.post} className='blog-post-input' onChange={handleInputChange} required/>
             </div>
             <br/>
             <input type="submit" value="Submit" className='blog-btn'/>
