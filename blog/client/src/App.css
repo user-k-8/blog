@@ -9,7 +9,13 @@
   }
 
 body{
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+.loader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .nav-container{
     display: flex;
@@ -244,8 +250,8 @@ body{
     -webkit-text-fill-color: transparent;
 }
 
-.{
-    /* border: 4blog-btnpx solid black; */
+.blog-btn{
+    /* border: 4px solid black; */
     border: none;
     color:white;
     font-size: 1.2rem;
