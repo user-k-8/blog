@@ -30,19 +30,24 @@ const navigateAndRefresh = (path) =>{
 
 const handleSubmit = (e)=>{
    e.preventDefault();
-  const fullFormData = new FormData();
-  for (let key in form) {
-      fullFormData.append(key, form[key]);
-  }
-  try {
-    const response =  fetch('https://blog-fzhg.onrender.com/posts/api/upload', {
-      method: 'POST',
-      body: fullFormData,
-    });
-  
-  } catch (error) {
-    console.error('Error:', error);
-  }
+ 
+   fetch('https://blog-fzhg.onrender.com/posts/api/upload', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(form)
+})
+.then(response => response.json())
+.then(data => {
+  //  response data from the server
+  console.log(data)
+
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
 
 alert('Blog post created!');
 navigateAndRefresh('/')
@@ -94,7 +99,7 @@ console.log(form)
           <div className="post form-row">
              <label htmlFor="post">Blog Post <span className="star">*</span></label>
              <br/><br/>
-             <textarea type="text" id="post" name="post" value={form.post} className='blog-post-input' onChange={handleInputChange} />
+             <textarea type="text" id="post" name="post" value={form.post} className='blog-post-input' onChange={handleInputChange} required/>
           </div>
           <br/>
           <input type="submit" value="Submit" className='blog-btn'/>

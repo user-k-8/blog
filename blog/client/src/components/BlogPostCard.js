@@ -1,10 +1,9 @@
 import React from 'react'
 import {HashLink as Link} from 'react-router-hash-link';
-import { useDispatch } from 'react-redux';
 import img from './img/MA.png'
 
 const BlogPostCard = ({element}) => {
-
+    
     const handleSelect=()=>{
        localStorage.setItem('selectedPost', JSON.stringify(element));
     }

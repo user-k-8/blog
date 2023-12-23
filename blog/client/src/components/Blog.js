@@ -15,6 +15,7 @@ const fetchData = ()=>{
     ).then(
       data=> {
           setBackendData(data)
+          console.log(data)
       }
     ).catch(error => {
       console.error('Error:', error);

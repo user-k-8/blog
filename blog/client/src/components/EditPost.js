@@ -36,22 +36,24 @@ const EditPost = () => {
   const handleSubmit = async (e)=>{
      e.preventDefault();
    
-     const fullFormData = new FormData();
-     for (let key in form) {
-         fullFormData.append(key, form[key]);
-     }
+     fetch('https://blog-fzhg.onrender.com/posts/api/editpost', {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    })
+    .then(response => response.json())
+    .then(data => {
+      //  response data from the server
+      console.log(data)
+    
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 
-     try {
-       const response = await  fetch('https://blog-fzhg.onrender.com/posts/api/editpost', {
-        method: 'PUT',
-        body: fullFormData,
-      });
-       const data = await response.text();
-       console.log(data);
-     } catch (error) {
-       console.error('Error:', error);
-     }
-   
+     
   alert('Blog post updated!');
   navigateAndRefresh('/')
   

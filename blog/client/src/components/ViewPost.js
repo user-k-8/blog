@@ -11,7 +11,7 @@ const ViewPost = () => {
 
   const location = useLocation();
   const {element} = location.state;
-
+ console.log(element)
   const arr = element.post.split('.');
   const firsthalfIndex= arr.length/2
   const section1 = arr.slice(0,firsthalfIndex).join('.')
