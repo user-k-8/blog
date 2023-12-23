@@ -1,10 +1,8 @@
 import React, { useState} from 'react'
-import {connect} from 'react-redux'
 
 const Comments = (props) => {
 
   const [selected, setSelected] = useState(JSON.parse(localStorage.getItem("selectedPost")))
- console.log(selected)
 
   const storedUser = JSON.parse(localStorage.getItem("blogLogin"));
 
@@ -28,7 +26,7 @@ const handleSubmit = (event)=>{
 event.preventDefault();
 
 let newPost =  JSON.parse(localStorage.getItem("selectedPost"));
-console.log(newPost)
+
 if(newPost){
   newPost.user_comments = [form, ...newPost.user_comments] 
 }
@@ -46,7 +44,7 @@ fetch('https://blog-fzhg.onrender.com/comments/api/addComment', {
 .then(response => response.json())
 .then(data => {
   //  response data from the server
-  let selectedPost = data.filter(item=>item.post == props.item.post)
+  const selectedPost = data.filter(item=>item.id == selected.id)
   localStorage.setItem('selectedPost', JSON.stringify(selectedPost[0]));
   setSelected(selectedPost[0])
 
@@ -59,18 +57,11 @@ alert('Comment added!');
 setCommentForm({commentButton:"Add Comment", formDisplay:"none"})
 }
 
-const selectedPost=  JSON.parse(localStorage.getItem("selectedPost"));
-if(!selectedPost){
-  return <div>Loading</div>
-}
 
 const handleDelete =(element)=>{
 
-
-  
   let newPost =  selected;
   const commentIndex = selected.user_comments.indexOf(element)
-  console.log('index', commentIndex);
   newPost.user_comments = newPost.user_comments.filter(item=> item != newPost.user_comments[commentIndex])
 
   fetch('https://blog-fzhg.onrender.com/comments/api/deleteComment', {
@@ -83,7 +74,7 @@ const handleDelete =(element)=>{
   .then(response => response.json())
   .then(data => {
 
-    let selectedPost = data.filter(item=>item.post == props.item.post)
+    const selectedPost = data.filter(item=>item.id == selected.id)
     localStorage.setItem('selectedPost', JSON.stringify(selectedPost[0]));
     setSelected(selectedPost[0])
   
@@ -142,11 +133,4 @@ const handleComment = ()=>{
   )
 }
 
-
-const mapStateToProps = (state)=>{
-  return{
-    selected_post: state.selected_post
-  }
-}
-
-export default connect(mapStateToProps)(Comments)
+export default Comments

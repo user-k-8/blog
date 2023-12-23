@@ -7,7 +7,6 @@ import AddPost from "./components/AddPost";
 import Login from "./components/Login";
 import Register from "./components/Register"
 import EditPost from "./components/EditPost";
-import Redirect from "./components/Redirect";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
                   <Route exact path = "/login" element={<Login/>} />
                   <Route exact path = "/register" element={<Register/>} />
                    <Route exact path="/editpost" element={<EditPost/>}/>
-                   <Route exact path="/blog" element={<Redirect/>}/>
                </Routes>       
           </Router>
         </>

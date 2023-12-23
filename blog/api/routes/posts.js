@@ -1,8 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const bodyParser =require('body-parser');
 const fsPromises = require('fs').promises;
-const path = require('path');
 
 const router = express.Router();
 
@@ -51,7 +49,7 @@ router.post('/api/upload', async (req, res) => {
   });
 
 //edit post
-router.post('/api/editpost',  async (req, res) => {
+router.put('/api/editpost',  async (req, res) => {
    
 // Create JSON object
    
@@ -86,15 +84,15 @@ router.post('/api/editpost',  async (req, res) => {
    });
 
 //delete
- router.post('/api/deletePost', async (req, res)=>{
+ router.delete('/api/deletePost', async (req, res)=>{
         
     const newPosts = postsDB.posts.filter(item=> item.id != req.body.id)
-   postsDB.setUsers(newPosts)
-   await fsPromises.writeFile('./data/posts.json', JSON.stringify(postsDB.posts), (err)=>{
+    postsDB.setUsers(newPosts)
+    await fsPromises.writeFile('./data/posts.json', JSON.stringify(postsDB.posts), (err)=>{
 
     if(err){
         console.error('error',err);
-        res.status(500).send('error')
+        res.status(500).send('error deleting')
     }
     else{
         res.send('deleted')

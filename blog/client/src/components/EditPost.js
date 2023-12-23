@@ -43,7 +43,7 @@ const EditPost = () => {
 
      try {
        const response = await  fetch('https://blog-fzhg.onrender.com/posts/api/editpost', {
-        method: 'POST',
+        method: 'PUT',
         body: fullFormData,
       });
        const data = await response.text();
@@ -53,13 +53,11 @@ const EditPost = () => {
      }
    
   alert('Blog post updated!');
-  navigateAndRefresh('/blog')
+  navigateAndRefresh('/')
   
   }
   
-
-  
-    return (
+return (
       <div className='create-post-container' id='edit-top'>
            <div>
               <Navbar/>

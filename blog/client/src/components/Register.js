@@ -10,14 +10,11 @@ const Register = () => {
       
     }); 
     
-
-    const handleInputChange = event=>{
-    
+  const handleInputChange = event=>{
     const {name, value, type, checked} = event.target
     setForm({...form, [name]: type==='checkbox' ? checked : value})
-    }
-    
-    
+}
+       
 const handleSubmit =  (event)=>{
    
     event.preventDefault();

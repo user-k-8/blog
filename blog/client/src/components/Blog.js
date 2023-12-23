@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'
 import BlogPostCard from './BlogPostCard'
-import {connect} from 'react-redux';
 import {ClipLoader} from 'react-spinners';
 import Footer from './Footer'
 import { HashLink as Link } from 'react-router-hash-link';
-const Blog = (props) => {
+const Blog = () => {
 
   // https://blog-fzhg.onrender.com
   const [backendData, setBackendData] =useState([])
@@ -20,11 +19,8 @@ const fetchData = ()=>{
     ).catch(error => {
       console.error('Error:', error);
   });
-
 }
-  fetchData();
-
-
+fetchData();
 
 
   if(!backendData){
@@ -68,11 +64,7 @@ const fetchData = ()=>{
    }
 
   })
- const [loadButton, setLoadButton] = useState("block")
-  const handleLoad =()=>{
-      setLoadButton("none")
-      window.location.reload()
-  }
+
 
 
   return (
@@ -113,11 +105,6 @@ const fetchData = ()=>{
   )
 }
 
-const mapStateToProps = (state)=>{
 
-  return{
-    blog_posts: state.blog_posts
-  }
-}
 
-export default connect(mapStateToProps)(Blog)
+export default Blog

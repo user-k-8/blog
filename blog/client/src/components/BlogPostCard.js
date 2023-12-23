@@ -5,12 +5,10 @@ import img from './img/MA.png'
 
 const BlogPostCard = ({element}) => {
 
-  const dispatch = useDispatch()
-
     const handleSelect=()=>{
-      dispatch({ type: 'SELECT_POST', payload: element});
        localStorage.setItem('selectedPost', JSON.stringify(element));
     }
+    
   return (
 <div className='destination-card'>
     <div className='card-image'>

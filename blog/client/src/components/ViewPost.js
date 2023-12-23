@@ -2,18 +2,15 @@ import Navbar from './Navbar'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Comments from './Comments';
 import Footer from './Footer';
-import { useDispatch } from 'react-redux';
 import img1 from './img/c.jpg'
 import img2 from './img/a.jpg'
 
 const ViewPost = () => {
 
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const location = useLocation();
   const {element} = location.state;
-
 
   const arr = element.post.split('.');
   const firsthalfIndex= arr.length/2
@@ -23,7 +20,6 @@ const ViewPost = () => {
    const storedUser= JSON.parse(localStorage.getItem("blogLogin"));
 
    const navigateAndRefresh = (path) =>{
-
     navigate(path);
     window.location.reload();
   }
@@ -33,7 +29,7 @@ const ViewPost = () => {
     try {
       console.log(element)
       const response =  fetch('https://blog-fzhg.onrender.com/posts/api/deletePost', {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -45,9 +41,8 @@ const ViewPost = () => {
       // Handle any errors
       console.error('Error deleting data:', error);
     }
-    dispatch({ type: 'DELETE_POST', payload: element.post});
     alert('Blog post deleted!');
-    navigateAndRefresh('/blog')
+    navigateAndRefresh('/')
 
 }
   return (
